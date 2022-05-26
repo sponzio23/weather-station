@@ -12,6 +12,7 @@ interval = 30
 wind_interval = 5
 
 # Database things
+print("Attempting to connect to the database...")
 MONGO_URI = config('MONGO_URI')
 client = MongoClient(MONGO_URI)
 db = client.PutneyWeather
@@ -153,10 +154,11 @@ while True:
     humidity, pressure, temp = read_bme280()
 
     # Print things
-    print(rainfall)
-    print(humidity, pressure, temp)
-    print(wind_speed, wind_gust)
-    print (wind_direction)
+    #print(rainfall)
+    #print(humidity, pressure, temp)
+    #print(wind_speed, wind_gust)
+    #print (wind_direction)
+    #print(time.time())
 
     # Insert things into the database
     data = {
@@ -167,6 +169,7 @@ while True:
         'wind_speed' : wind_speed,
         'wind_gust' : wind_gust,
         'wind_direction' : wind_direction
+        'timestamp' : time.time()
     }
     
     result = db.weatherData.insert_one(data)
