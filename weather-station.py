@@ -8,7 +8,7 @@ import math
 from pymongo import MongoClient
 from decouple import config
 
-interval = 30
+interval = 300
 wind_interval = 5
 
 # Database things
@@ -171,9 +171,10 @@ while True:
         'wind_direction' : wind_direction
         'timestamp' : time.time()
     }
-    
+
+    #print("Attempting to insert data")
     result = db.weatherData.insert_one(data)
-    print('inserted data')
+    #print("Inserted data")
 
     # Reset things
     store_speeds = []
