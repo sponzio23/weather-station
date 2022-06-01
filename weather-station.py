@@ -168,7 +168,7 @@ while True:
         'temp' : temp,
         'wind_speed' : wind_speed,
         'wind_gust' : wind_gust,
-        'wind_direction' : wind_direction
+        'wind_direction' : wind_direction,
         'timestamp' : time.time()
     }
 
