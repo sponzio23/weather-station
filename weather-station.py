@@ -6,6 +6,7 @@ import time
 import statistics
 import math
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 from decouple import config
 
 interval = 300
@@ -169,7 +170,9 @@ while True:
         'wind_speed' : wind_speed,
         'wind_gust' : wind_gust,
         'wind_direction' : wind_direction,
-        'timestamp' : time.time()
+        'timestamp' : time.time(),
+        '_partition' : "data", # This is for mongodb realm sync
+        '_id' : str(ObjectId())
     }
 
     #print("Attempting to insert data")
